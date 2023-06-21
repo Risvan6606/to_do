@@ -2,11 +2,16 @@ import React, { useState } from "react";
 
 
 export const TodoForm=({addTodo})=>{
-    const [value,setValue]=useState(" ")
+    const [value,setValue]=useState("")
     const handleSubmit = e=>{
         e.preventDefault();
-       addTodo(value)
-       setValue('')
+        if(value.trim() == ""){
+            alert("value cannot be null")
+        }else{
+            addTodo(value)
+            setValue('')
+        }
+        console.log(value.length)
     }
     return (
         <form className="TodoForm" onSubmit={handleSubmit}>
